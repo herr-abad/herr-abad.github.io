@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Herr Abad | Deutsch- und Informatiklehrer</title>
+  <script>
+    if(sessionStorage.getItem("cursoLogin")!="true"){
+      location.replace("/");
+    }
+  </script>
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- CSS personalizado -->
@@ -17,173 +22,132 @@
       <a class="navbar-brand" href="/">
         <h1>Herr Abad</h1>
       </a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#menu" aria-controls="menu"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ms-auto">
-
-          <!--no Dropdown -->
-          <li class="nav-item ">
-            <a class="nav-link  wt"
-              href="/uber-mich.html"
-              role="button"
-              aria-expanded="false">
-              Über mich
-            </a>
-          </li>
-
-          <!-- Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle wt"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Niveaus
-            </a>
-
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/niveaus/A1.html">A1 - Anfänger</a></li>
-                <li><a class="dropdown-item" href="/niveaus/A2.html">A2 - Grundstufe</a></li>
-                <li><a class="dropdown-item" href="/niveaus/B1.html">B1 - Mittelstufe</a></li>
-                <li><a class="dropdown-item" href="/niveaus/B2.html">B2 - Fortgeschritten</a></li>
-              </ul>
-
-          </li>
-
-          <!-- no Dropdown -->
-          <li class="nav-item ">
-            <a class="nav-link -toggle wt"
-              href="/intranet.html"
-              role="button"
-              aria-expanded="false">
-              Intranet
-            </a>
-
-          </li>
-
-        </ul>
-      </div>
+      <button class="btn btn-danger btn-lg" onclick="logout()">Cerrar sesión</button>
+      <script> function logout(){ sessionStorage.removeItem("cursoLogin"); location.href = "/"; } </script>
     </div>
+    
   </nav>
 
-  <!-- Navbar 2 -->
+    <!-- Navbar 2 -->
   <nav class="navbar navbar-expand-lg navbar-dark stronger py-4">
-    <div class="container"><a class="wt" href="/">Deutsch- und Informatiklehrer</a></div>
+    <div class="container"><a class="wt" href="/">Bildung befreit</a></div>
   </nav>
 
 
 <section>
-
-<div class="container twt">
-
-<div id="certificado" style="
-margin-top:40px;
-padding:60px;
-border:6px solid #0000aa;
-text-align:center;
-background:white;
-">
-
-<h1>Certificado de Finalización</h1>
-
-<p style="margin-top:30px;">Se certifica que</p>
-
-<h2 id="nombre"></h2>
-
-<p>ha completado satisfactoriamente el curso</p>
-
-<h3>Alemán A1 — Introducción al idioma alemán</h3>
-
-<p id="fecha" style="margin-top:30px;"></p>
-
-<p style="margin-top:40px;">Herr Abad — Plataforma educativa</p>
-
-<button onclick="window.print()" class="btn-curso" style="margin-top:30px;">
-Descargar / Imprimir certificado
-</button>
-
+<div class="container twt" style="padding:50px; border-radius:10px; text-align:center;">
+    <div id="certificado" class="certificado">
+        <canvas id="canvasCertificado"></canvas>
+        <br>
+        <br>
+        <button class="btn btn-danger btn-lg" onclick="guardarCertificado()">
+            Guardar certificado
+        </button>
+    </div>
 </div>
-
-</div>
-
 </section>
+
 
 <script>
 
-function obtenerParametro(nombre){
+const canvas = document.getElementById("canvasCertificado");
+const ctx = canvas.getContext("2d");
+const imagen = new Image();
+    imagen.src = "/images/ft/certificado.png";
+const params = new URLSearchParams(window.location.search);
+const nombre = params.get("nombre") || "Nombre del estudiante";
 
-let params = new URLSearchParams(window.location.search)
 
-return params.get(nombre)
+    imagen.onload = async function(){
+
+    await document.fonts.load('80px "Kunster Script"');
+    // Tamaño real de la imagen
+        canvas.width = imagen.width;
+        canvas.height = imagen.height;
+    dibujarCertificado();
+
+};
+
+
+function dibujarCertificado(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Fondo
+    ctx.drawImage(
+        imagen,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    // Escala basada en ancho original
+    const escala = canvas.width / imagen.width;
+
+    // Nombre
+
+    ctx.font = `${80 * escala}px "Kunster Script"`;
+    ctx.fillStyle="#000";
+    ctx.textAlign="center";
+
+
+    ctx.fillText(
+        nombre,
+        canvas.width/2,
+        645 * escala
+    );
+
+    // Fecha
+
+    ctx.font = `${30 * escala}px Arial`;
+
+    const fechaActual = new Date();
+
+    const opciones = { 
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    };
+
+    const fechaTexto = fechaActual.toLocaleDateString("es-ES", opciones);
+
+
+    ctx.fillText(
+        fechaTexto,
+        canvas.width/3.8,
+        900 * escala
+    );
 
 }
 
-let nombre = obtenerParametro("nombre")
 
-let fecha = new Date().toLocaleDateString()
+// Guardar
 
-document.getElementById("nombre").innerText = nombre
+function guardarCertificado(){
 
-document.getElementById("fecha").innerText = "Fecha: " + fecha
+    const enlace=document.createElement("a");
+
+    enlace.download="certificado.png";
+    enlace.href=canvas.toDataURL("image/png");
+    enlace.click();
+
+}
+
+
+// Redibujar si cambia tamaño
+window.addEventListener("resize", dibujarCertificado);
 
 </script>
+
+
 
 <!-- Separador -->
   <div class="navbar navbar-expand-lg navbar-dark stronger py-5">
     <div class="container"></div>
   </div>
-
-  <!-- Footer -->
-   <div class="container-fluid">
-    <div class="row align-items-center">
-    <div class="col-md-7 foter text-light d-flex align-items-center"></div>
-    <div class="col-md-2">
-        <h3>Herr Abad</h3>
-        <a href="/"><p>Startsite</p></a>
-        <a href="/uber-mich.html"><p>Über mich</p></a>
-        
-        <br><br>
-
-        <h3>Niveaus</h3>
-        <a href="/niveaus/a1.html"><p>A1 - Anfänger</p></a>
-        <a href="/niveaus/a2.html"><p>A2 - Grundstufe</p></a>
-        <a href="/niveaus/b1.html"><p>B1 - Mittelstufe</p></a>
-        <a href="/niveaus/b2.html"><p>B2 - Fortgeschritten</p></a>
-
-    </div>
-    <div class="col-md-3">
-              
-        <h3>Werkzeug</h3>
-        <a href="/intranet.html"><p>Intranet</p></a>
-        <a href="https://www.youtube.com/@herr-Abad"><p>Youtube</p></a>
-
-    </div>
-  </div>
-   </div>
-  
-
-
-  <!-- Separador -->
-  <div class="navbar navbar-expand-lg navbar-dark stronger py-3 der">
-    <div class="container der">
-      <a href="#top" class="btn btn-primary back-to-top" title="Volver arriba"> ↑ </a>
-    </div>
-  </div>
-  
+ 
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-
-
-
-

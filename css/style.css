@@ -44,6 +44,18 @@ span{
 .prim, section{
   background-color: #0281ff;
 }
+.paisaje-large{
+  background-image:
+        linear-gradient(rgba(0,4,255,.2), rgba(1,26,217,0)),
+        url("/images/ft/fondo-3.png");
+  background-attachment: fixed;
+}
+.fondo{
+  background:
+        linear-gradient(rgba(0,4,255,.2), rgba(1,26,217,0)),
+        url("/images/ft/fondo-vertical.png") center/cover no-repeat;
+}
+
 .grs{
   background-color: rgb(220, 220, 200) !important;
   height: -webkit-fill-available;
@@ -74,11 +86,50 @@ section, .pd{
   margin-top:120px;
 }
 
-/* banner con Imagenes */
-.hero {
-  background: linear-gradient(rgb(0, 4, 255, 0.2), rgba(1, 26, 217, 0.0)),
-              url("/images/fondo.png") center/cover no-repeat;
-  height: 82vh;
+.hero{
+    position:relative;
+    overflow:hidden;
+    height:82vh;
+    padding: 0px;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(0,4,255,.2), rgba(1,26,217,0)),
+        url("/images/fondillo.png");
+    background-repeat:repeat-x;
+    background-size:auto 100%;
+    animation:mover 20s linear infinite;
+    z-index:0;
+}
+
+.hero .container{
+    position:relative;
+    z-index:1;
+    height:100%;
+    display:flex;
+    justify-content:flex-start; /* Izquierda */
+    align-items:flex-start;
+}
+
+.banner-personaje{
+    width:auto;
+    height:100%;
+}
+.hero .container h1{
+  margin-top:50px;
+}
+
+@keyframes mover{
+    from{
+        background-position:0 0;
+    }
+    to{
+        background-position:-1920px 0;
+    }
 }
 
 .foter{
@@ -98,9 +149,10 @@ section, .pd{
 
 /* Secciones con imagenes */
 #presentacion{
-  background: url("/images/ft/foto-aliado.png") center/cover no-repeat;
+  background: url("/images/ft/foto-perfil.jpg") right/cover no-repeat;
   height: -webkit-fill-available;
   min-height: 500px;
+  justify-content:flex-end; /* Izquierda */
 }
 #descripcion{
   background: url("/images/ft/sustentacion.JPG") center/cover no-repeat;
@@ -119,7 +171,7 @@ section, .pd{
 }
 .lucy {
   background:
-    url("/images/ft/fondo.jpg") center / cover no-repeat;
+    url("/images/ft/fondo-2.png") center / cover no-repeat;
   background-attachment: fixed;
   height: 82vh;
 }
@@ -204,7 +256,6 @@ table{
   padding: 8px;
 }
 
-
 .galeria-masonry {
   column-width: 280px;
   column-gap: 1.2rem;
@@ -231,6 +282,8 @@ table{
 }
 #curso {
   display: none;
+  padding: 50px;
+  background-color: transparent;
 }
 
 
@@ -352,4 +405,15 @@ body{
 
 .btn-curso:hover{
   background:#0033ff;
+}
+
+
+#canvasCertificado{
+    width:100%;
+    height:auto;
+    max-width:100%;
+}
+
+.certificado{
+    width:100%;
 }

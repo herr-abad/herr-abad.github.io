@@ -5,9 +5,9 @@
 
 <!-- Login -->
 
-<section class="prim">
+<section id="login" class="paisaje-large">
   <div class="container">
-    <div id="login" class="login-box">
+    <div class="login-box">
       <h3>Acceso al curso</h3>
       <input type="text" id="usuario" placeholder="Usuario">
       <input type="password" id="clave" placeholder="Contraseña">
@@ -17,11 +17,9 @@
   </div>
 </section>
 
-<section id="curso">
+<div class="paisaje-large" id="curso">
 
-  <div class="container twt">
-    <h2 style="text-align:center; margin-bottom:40px;">Contenido del curso</h2>
-    
+    <h2 class="wt" style="text-align:center; margin-bottom:40px;">Contenido del curso</h2>
     <div class="curso-grid">
 
       <!-- Tema 1 -->
@@ -39,8 +37,8 @@
       <div class="card-curso">
       <img src="/images/ft/fondo.jpg" alt="Tema 2">
         <div class="card-body">
-          <h4>Tema 2</h4>
-          <p>Conceptos fundamentales que necesitas dominar.</p>
+          <h4>Das Wetter</h4>
+          <p>Vocabulario escencial relacionado al Clima.</p>
           <a href="/cursos/leccion2.html" class="btn-curso">Ver lección</a>
         </div>
       </div>
@@ -50,28 +48,27 @@
       <div class="card-curso">
       <img src="/images/ft/fondo.jpg" alt="Tema 3">
         <div class="card-body">
-          <h4>Tema 3</h4>
-          <p>Aplicaciones prácticas y ejercicios guiados.</p>
+          <h4>Poesia en alemán</h4>
+          <p>Inspirado en poesia latinoamericana.</p>
           <a href="/cursos/leccion3.html" class="btn-curso">Ver lección</a>
         </div>
       </div>
 
     </div>
-  </div>
 
- <div class="container" style="text-align:center; margin-top:30px;">
-  <a href="/examen-aleman-a1" class="btn-curso">Realizar examen del curso</a>
-</div>
+  <div style="text-align:center; margin-top:30px;">
+    <a href="/examen-aleman-a1" class="btn-curso">Realizar examen del curso</a>
+  </div>
   
 
-</section>
+</div>
 
 
 
 <script>
 
-const user = "alumno";
-const pass = "123456";
+const user = "Alemán";
+const pass = "Deutsch-2024";
 
 function login(){
 
@@ -80,7 +77,7 @@ function login(){
 
   if(u===user && p===pass){
 
-    localStorage.setItem("cursoLogin","true");
+    sessionStorage.setItem("cursoLogin","true");
 
     document.getElementById("login").style.display="none";
     document.getElementById("curso").style.display="block";
@@ -119,5 +116,5 @@ setInterval(function(){
 },1000);
 
 </script>
-  
-{% include footer.html %}
+
+{% include footer-intra.html %}

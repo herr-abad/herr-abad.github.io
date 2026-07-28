@@ -48,10 +48,10 @@
             </a>
 
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/niveaus/A1.html">A1 - Anfänger</a></li>
-                <li><a class="dropdown-item" href="/niveaus/A2.html">A2 - Grundstufe</a></li>
-                <li><a class="dropdown-item" href="/niveaus/B1.html">B1 - Mittelstufe</a></li>
-                <li><a class="dropdown-item" href="/niveaus/B2.html">B2 - Fortgeschritten</a></li>
+                <li><a class="dropdown-item" href="/niveaus/a1.html">A1 - Anfänger</a></li>
+                <li><a class="dropdown-item" href="/niveaus/a2.html">A2 - Grundstufe</a></li>
+                <li><a class="dropdown-item" href="/niveaus/b1.html">B1 - Mittelstufe</a></li>
+                <li><a class="dropdown-item" href="/niveaus/b2.html">B2 - Fortgeschritten</a></li>
               </ul>
 
           </li>
@@ -80,9 +80,9 @@
 
 <!-- Login -->
 
-<section class="prim">
+<section id="login" class="paisaje-large">
   <div class="container">
-    <div id="login" class="login-box">
+    <div class="login-box">
       <h3>Acceso al curso</h3>
       <input type="text" id="usuario" placeholder="Usuario">
       <input type="password" id="clave" placeholder="Contraseña">
@@ -92,11 +92,9 @@
   </div>
 </section>
 
-<section id="curso">
+<div class="paisaje-large" id="curso">
 
-  <div class="container twt">
-    <h2 style="text-align:center; margin-bottom:40px;">Contenido del curso</h2>
-    
+    <h2 class="wt" style="text-align:center; margin-bottom:40px;">Contenido del curso</h2>
     <div class="curso-grid">
 
       <!-- Tema 1 -->
@@ -114,8 +112,8 @@
       <div class="card-curso">
       <img src="/images/ft/fondo.jpg" alt="Tema 2">
         <div class="card-body">
-          <h4>Tema 2</h4>
-          <p>Conceptos fundamentales que necesitas dominar.</p>
+          <h4>Das Wetter</h4>
+          <p>Vocabulario escencial relacionado al Clima.</p>
           <a href="/cursos/leccion2.html" class="btn-curso">Ver lección</a>
         </div>
       </div>
@@ -125,28 +123,27 @@
       <div class="card-curso">
       <img src="/images/ft/fondo.jpg" alt="Tema 3">
         <div class="card-body">
-          <h4>Tema 3</h4>
-          <p>Aplicaciones prácticas y ejercicios guiados.</p>
+          <h4>Poesia en alemán</h4>
+          <p>Inspirado en poesia latinoamericana.</p>
           <a href="/cursos/leccion3.html" class="btn-curso">Ver lección</a>
         </div>
       </div>
 
     </div>
-  </div>
 
- <div class="container" style="text-align:center; margin-top:30px;">
-  <a href="/examen-aleman-a1" class="btn-curso">Realizar examen del curso</a>
-</div>
+  <div style="text-align:center; margin-top:30px;">
+    <a href="/examen-aleman-a1" class="btn-curso">Realizar examen del curso</a>
+  </div>
   
 
-</section>
+</div>
 
 
 
 <script>
 
-const user = "alumno";
-const pass = "123456";
+const user = "Alemán";
+const pass = "Deutsch-2024";
 
 function login(){
 
@@ -155,7 +152,7 @@ function login(){
 
   if(u===user && p===pass){
 
-    localStorage.setItem("cursoLogin","true");
+    sessionStorage.setItem("cursoLogin","true");
 
     document.getElementById("login").style.display="none";
     document.getElementById("curso").style.display="block";
@@ -194,57 +191,14 @@ setInterval(function(){
 },1000);
 
 </script>
-  
+
 <!-- Separador -->
   <div class="navbar navbar-expand-lg navbar-dark stronger py-5">
     <div class="container"></div>
   </div>
-
-  <!-- Footer -->
-   <div class="container-fluid">
-    <div class="row align-items-center">
-    <div class="col-md-7 foter text-light d-flex align-items-center"></div>
-    <div class="col-md-2">
-        <h3>Herr Abad</h3>
-        <a href="/"><p>Startsite</p></a>
-        <a href="/uber-mich.html"><p>Über mich</p></a>
-        
-        <br><br>
-
-        <h3>Niveaus</h3>
-        <a href="/niveaus/a1.html"><p>A1 - Anfänger</p></a>
-        <a href="/niveaus/a2.html"><p>A2 - Grundstufe</p></a>
-        <a href="/niveaus/b1.html"><p>B1 - Mittelstufe</p></a>
-        <a href="/niveaus/b2.html"><p>B2 - Fortgeschritten</p></a>
-
-    </div>
-    <div class="col-md-3">
-              
-        <h3>Werkzeug</h3>
-        <a href="/intranet.html"><p>Intranet</p></a>
-        <a href="https://www.youtube.com/@herr-Abad"><p>Youtube</p></a>
-
-    </div>
-  </div>
-   </div>
-  
-
-
-  <!-- Separador -->
-  <div class="navbar navbar-expand-lg navbar-dark stronger py-3 der">
-    <div class="container der">
-      <a href="#top" class="btn btn-primary back-to-top" title="Volver arriba"> ↑ </a>
-    </div>
-  </div>
-  
+ 
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-
-
-
-

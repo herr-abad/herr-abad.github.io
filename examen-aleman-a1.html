@@ -1,97 +1,249 @@
 ---
 ---
 
-{% include header.html %}
+{% include header-intra.html %}
 
-<section class="hero d-flex align-items-center">
-<div class="container text-center wt">
+<section class="paisaje-large">
+    <div class="container twt" style="padding:50px;">
+        <h2>Evaluación de Alemán (Nivel B1–B2)</h2>
 
-<h1>Examen — Alemán A1</h1>
-<p>Evaluación básica del curso</p>
+        <form id="examen">
 
-</div>
-</section>
+        <h3>1. Wählen Sie die richtige Antwort:</h3>
+        <p>Ich ______ gestern nach Berlin gefahren.</p>
+        <label><input type="radio" name="p1" value="1"> bin</label><br>
+        <label><input type="radio" name="p1" value="0"> habe</label><br>
+        <label><input type="radio" name="p1" value="0"> werde</label>
 
-<div class="navbar navbar-expand-lg navbar-dark stronger py-4">
-<div class="container"></div>
-</div>
+        <hr>
 
-<section>
+        <h3>2. Ergänzen Sie:</h3>
+        <p>Wenn ich mehr Zeit hätte, ______ ich Deutsch lernen.</p>
+        <label><input type="radio" name="p2" value="1"> würde</label><br>
+        <label><input type="radio" name="p2" value="0"> werde</label><br>
+        <label><input type="radio" name="p2" value="0"> hätte</label>
 
-<div class="container twt">
+        <hr>
 
-<h2>Evaluación</h2>
+        <h3>3. Was bedeutet "obwohl"?</h3>
+        <label><input type="radio" name="p3" value="0"> porque</label><br>
+        <label><input type="radio" name="p3" value="1"> aunque</label><br>
+        <label><input type="radio" name="p3" value="0"> entonces</label>
 
-<form id="examen">
+        <hr>
 
-<h3>1. ¿Cómo se dice "hola" en alemán?</h3>
+        <h3>4. Wählen Sie das richtige Verb.</h3>
+        <p>Er ______ jeden Tag um 7 Uhr auf.</p>
+        <label><input type="radio" name="p4" value="1"> steht</label><br>
+        <label><input type="radio" name="p4" value="0"> sitzt</label><br>
+        <label><input type="radio" name="p4" value="0"> schläft</label>
 
-<label><input type="radio" name="p1" value="0"> Guten Morgen</label><br>
-<label><input type="radio" name="p1" value="1"> Hallo</label><br>
-<label><input type="radio" name="p1" value="0"> Gute Nacht</label>
+        <hr>
 
+        <h3>5. Welche Präposition ist richtig?</h3>
+        <p>Ich interessiere mich ______ Musik.</p>
+        <label><input type="radio" name="p5" value="1"> für</label><br>
+        <label><input type="radio" name="p5" value="0"> mit</label><br>
+        <label><input type="radio" name="p5" value="0"> auf</label>
 
-<h3 style="margin-top:30px;">2. ¿Qué significa "Wie heißen Sie?"</h3>
+        <hr>
 
-<label><input type="radio" name="p2" value="1"> ¿Cómo se llama usted?</label><br>
-<label><input type="radio" name="p2" value="0"> ¿Dónde vive?</label><br>
-<label><input type="radio" name="p2" value="0"> ¿Cómo está?</label>
+        <h3>6. Perfekt:</h3>
+        <p>Wir ______ das Buch gelesen.</p>
+        <label><input type="radio" name="p6" value="1"> haben</label><br>
+        <label><input type="radio" name="p6" value="0"> sind</label><br>
+        <label><input type="radio" name="p6" value="0"> werden</label>
 
+        <hr>
 
-<h3 style="margin-top:30px;">3. ¿Qué significa "die Sonne"?</h3>
+        <h3>7. Passiv:</h3>
+        <p>Das Auto ______ repariert.</p>
+        <label><input type="radio" name="p7" value="1"> wird</label><br>
+        <label><input type="radio" name="p7" value="0"> hat</label><br>
+        <label><input type="radio" name="p7" value="0"> ist</label>
 
-<label><input type="radio" name="p3" value="1"> El sol</label><br>
-<label><input type="radio" name="p3" value="0"> La lluvia</label><br>
-<label><input type="radio" name="p3" value="0"> La nube</label>
+        <hr>
 
+        <h3>8. Welches Wort passt?</h3>
+        <p>Ich freue mich ______ deinen Besuch.</p>
+        <label><input type="radio" name="p8" value="1"> auf</label><br>
+        <label><input type="radio" name="p8" value="0"> über</label><br>
+        <label><input type="radio" name="p8" value="0"> mit</label>
 
-<div style="margin-top:40px">
+        <hr>
 
-<button type="button" class="btn-curso" onclick="corregirExamen()">
-Enviar examen
-</button>
+        <h3>9. Welches Wort ist ein Synonym von "beginnen"?</h3>
+        <label><input type="radio" name="p9" value="1"> anfangen</label><br>
+        <label><input type="radio" name="p9" value="0"> bleiben</label><br>
+        <label><input type="radio" name="p9" value="0"> schließen</label>
 
-</div>
+        <hr>
 
-</form>
+        <h3>10. Ergänzen Sie:</h3>
+        <p>Sie sagte, dass sie morgen ______.</p>
+        <label><input type="radio" name="p10" value="1"> kommen würde</label><br>
+        <label><input type="radio" name="p10" value="0"> kommt</label><br>
+        <label><input type="radio" name="p10" value="0"> gekommen ist</label>
 
-<div id="resultado" style="margin-top:40px;"></div>
+        <hr>
 
-</div>
+        <h3>11. Welcher Artikel ist richtig?</h3>
+        <p>______ Umwelt ist wichtig.</p>
+        <label><input type="radio" name="p11" value="1"> Die</label><br>
+        <label><input type="radio" name="p11" value="0"> Der</label><br>
+        <label><input type="radio" name="p11" value="0"> Das</label>
 
+        <hr>
+
+        <h3>12. Welches Wort passt?</h3>
+        <p>Er spricht Deutsch ______ Englisch.</p>
+        <label><input type="radio" name="p12" value="1"> und</label><br>
+        <label><input type="radio" name="p12" value="0"> oder</label><br>
+        <label><input type="radio" name="p12" value="0"> aber</label>
+
+        <hr>
+
+        <h3>13. Lesen Sie:</h3>
+
+        <p><b>Anna lebt seit drei Jahren in Deutschland. Sie arbeitet als Ingenieurin und besucht am Wochenende einen Deutschkurs.</b></p>
+
+        <p>Warum besucht Anna einen Deutschkurs?</p>
+
+        <label><input type="radio" name="p13" value="1"> Sie möchte ihr Deutsch verbessern.</label><br>
+        <label><input type="radio" name="p13" value="0"> Sie sucht Arbeit.</label><br>
+        <label><input type="radio" name="p13" value="0"> Sie möchte reisen.</label>
+
+        <hr>
+
+        <h3>14. Was ist richtig?</h3>
+        <p>Ich kenne den Mann, ______ dort steht.</p>
+
+        <label><input type="radio" name="p14" value="1"> der</label><br>
+        <label><input type="radio" name="p14" value="0"> den</label><br>
+        <label><input type="radio" name="p14" value="0"> dem</label>
+
+        <hr>
+
+        <h3>15. Modalverb:</h3>
+
+        <p>Du ______ heute nicht arbeiten.</p>
+
+        <label><input type="radio" name="p15" value="1"> musst</label><br>
+        <label><input type="radio" name="p15" value="0"> kannst</label><br>
+        <label><input type="radio" name="p15" value="0"> darfst</label>
+
+        <hr>
+
+        <h3>16. Wortschatz:</h3>
+
+        <p>Welches Wort gehört nicht zur Gruppe?</p>
+
+        <label><input type="radio" name="p16" value="0"> Tisch</label><br>
+        <label><input type="radio" name="p16" value="0"> Stuhl</label><br>
+        <label><input type="radio" name="p16" value="1"> Apfel</label>
+
+        <hr>
+
+        <h3>17. Konjunktiv II:</h3>
+
+        <p>Wenn ich reich wäre, ______ ich um die Welt reisen.</p>
+
+        <label><input type="radio" name="p17" value="1"> würde</label><br>
+        <label><input type="radio" name="p17" value="0"> werde</label><br>
+        <label><input type="radio" name="p17" value="0"> bin</label>
+
+        <hr>
+
+        <h3>18. Welches Wort passt?</h3>
+
+        <p>Das Wetter ist schlecht, ______ gehen wir spazieren.</p>
+
+        <label><input type="radio" name="p18" value="1"> trotzdem</label><br>
+        <label><input type="radio" name="p18" value="0"> deshalb</label><br>
+        <label><input type="radio" name="p18" value="0"> weil</label>
+
+        <hr>
+
+        <h3>19. Welche Antwort ist höflich?</h3>
+
+        <label><input type="radio" name="p19" value="1"> Könnten Sie mir helfen?</label><br>
+        <label><input type="radio" name="p19" value="0"> Hilf mir!</label><br>
+        <label><input type="radio" name="p19" value="0"> Gib das!</label>
+
+        <hr>
+
+        <h3>20. Welcher Satz ist grammatikalisch richtig?</h3>
+
+        <label><input type="radio" name="p20" value="1"> Nachdem er gegessen hatte, ging er spazieren.</label><br>
+        <label><input type="radio" name="p20" value="0"> Nachdem er gegessen hat, ging er spazieren.</label><br>
+        <label><input type="radio" name="p20" value="0"> Nachdem gegessen hatte er, ging spazieren.</label>
+
+        <div style="margin-top:40px">
+        <button type="button" class="btn-curso" onclick="corregirExamen()">
+        Enviar examen
+        </button>
+        </div>
+
+        </form>
+
+        <div id="resultado" style="margin-top:40px;"></div>
+    </div>
 </section>
 
 <script>
+    function corregirExamen(){
 
-function corregirExamen(){
+    let puntos = 0;
 
-let total = 0
+    for(let i=1;i<=20;i++){
 
-document.querySelectorAll("#examen input:checked").forEach(el=>{
-total += parseInt(el.value)
-})
+        let respuesta = document.querySelector('input[name="p'+i+'"]:checked');
 
-if(total >= 3){
+        if(respuesta){
+            puntos += parseInt(respuesta.value);
+        }
 
-let nombre = prompt("Ingrese su nombre completo para el certificado")
+    }
 
-if(nombre){
+    let nivel = "";
 
-let url = "certificado.html?nombre=" + encodeURIComponent(nombre)
+    if(puntos <= 7){
+        nivel = "A1";
+    }else if(puntos <= 11){
+        nivel = "A2";
+    }else if(puntos <= 15){
+        nivel = "B1";
+    }else if(puntos <= 18){
+        nivel = "B2";
+    }else{
+        nivel = "C1";
+    }
 
-window.location.href = url
+
+    // Si aprobó con todo correcto
+    if(puntos === 20){
+
+        let nombre = prompt("Ingrese su nombre completo para generar el certificado:");
+
+        if(nombre && nombre.trim() !== ""){
+
+            window.location.href = 
+            "certificado.html?nombre=" + encodeURIComponent(nombre);
+
+        }else{
+            alert("Debe ingresar su nombre completo.");
+        }
+
+    }else{
+
+        document.getElementById("resultado").innerHTML =
+        "<h3>Resultado</h3>" +
+        "<p><strong>Puntaje:</strong> " + puntos + " / 20</p>" +
+        "<p><strong>Nivel estimado:</strong> " + nivel + "</p>";
+
+    }
 
 }
-
-}else{
-
-document.getElementById("resultado").innerHTML =
-"<h3 style='color:red;'>No aprobó el examen. Intente nuevamente.</h3>"
-
-}
-
-}
-
 </script>
 
-{% include footer.html %}
+{% include footer-intra.html %}

@@ -1,62 +1,114 @@
 ---
 ---
 
-{% include header.html %}
+{% include header-intra.html %}
+
 
 <section>
-
-<div class="container twt">
-
-<div id="certificado" style="
-margin-top:40px;
-padding:60px;
-border:6px solid #0000aa;
-text-align:center;
-background:white;
-">
-
-<h1>Certificado de Finalización</h1>
-
-<p style="margin-top:30px;">Se certifica que</p>
-
-<h2 id="nombre"></h2>
-
-<p>ha completado satisfactoriamente el curso</p>
-
-<h3>Alemán A1 — Introducción al idioma alemán</h3>
-
-<p id="fecha" style="margin-top:30px;"></p>
-
-<p style="margin-top:40px;">Herr Abad — Plataforma educativa</p>
-
-<button onclick="window.print()" class="btn-curso" style="margin-top:30px;">
-Descargar / Imprimir certificado
-</button>
-
+<div class="container twt" style="padding:50px; border-radius:10px; text-align:center;">
+    <div id="certificado" class="certificado">
+        <canvas id="canvasCertificado"></canvas>
+        <br>
+        <br>
+        <button class="btn btn-danger btn-lg" onclick="guardarCertificado()">
+            Guardar certificado
+        </button>
+    </div>
 </div>
-
-</div>
-
 </section>
+
 
 <script>
 
-function obtenerParametro(nombre){
+const canvas = document.getElementById("canvasCertificado");
+const ctx = canvas.getContext("2d");
+const imagen = new Image();
+    imagen.src = "/images/ft/certificado.png";
+const params = new URLSearchParams(window.location.search);
+const nombre = params.get("nombre") || "Nombre del estudiante";
 
-let params = new URLSearchParams(window.location.search)
 
-return params.get(nombre)
+    imagen.onload = async function(){
+
+    await document.fonts.load('80px "Kunster Script"');
+    // Tamaño real de la imagen
+        canvas.width = imagen.width;
+        canvas.height = imagen.height;
+    dibujarCertificado();
+
+};
+
+
+function dibujarCertificado(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Fondo
+    ctx.drawImage(
+        imagen,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    // Escala basada en ancho original
+    const escala = canvas.width / imagen.width;
+
+    // Nombre
+
+    ctx.font = `${80 * escala}px "Kunster Script"`;
+    ctx.fillStyle="#000";
+    ctx.textAlign="center";
+
+
+    ctx.fillText(
+        nombre,
+        canvas.width/2,
+        645 * escala
+    );
+
+    // Fecha
+
+    ctx.font = `${30 * escala}px Arial`;
+
+    const fechaActual = new Date();
+
+    const opciones = { 
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    };
+
+    const fechaTexto = fechaActual.toLocaleDateString("es-ES", opciones);
+
+
+    ctx.fillText(
+        fechaTexto,
+        canvas.width/3.8,
+        900 * escala
+    );
 
 }
 
-let nombre = obtenerParametro("nombre")
 
-let fecha = new Date().toLocaleDateString()
+// Guardar
 
-document.getElementById("nombre").innerText = nombre
+function guardarCertificado(){
 
-document.getElementById("fecha").innerText = "Fecha: " + fecha
+    const enlace=document.createElement("a");
+
+    enlace.download="certificado.png";
+    enlace.href=canvas.toDataURL("image/png");
+    enlace.click();
+
+}
+
+
+// Redibujar si cambia tamaño
+window.addEventListener("resize", dibujarCertificado);
 
 </script>
 
-{% include footer.html %}
+
+
+{% include footer-intra.html %}
