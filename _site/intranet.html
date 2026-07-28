@@ -92,7 +92,7 @@
   </div>
 </section>
 
-<div class="paisaje-large" id="curso">
+<div class="paisaje-large" id="curso" style="display:none;">
 
     <h2 class="wt" style="text-align:center; margin-bottom:40px;">Contenido del curso</h2>
     <div class="curso-grid">
@@ -164,10 +164,10 @@ function login(){
 
 document.addEventListener("DOMContentLoaded", function(){
 
-  if(localStorage.getItem("cursoLogin")=="true"){
-    document.getElementById("login").style.display="none";
-    document.getElementById("curso").style.display="block";
-  }
+  if(sessionStorage.getItem("cursoLogin")=="true"){
+      document.getElementById("login").style.display="none";
+      document.getElementById("curso").style.display="block";
+  } 
 
 });
 
