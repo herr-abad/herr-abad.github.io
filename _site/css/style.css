@@ -36,13 +36,25 @@ span{
   color:#3d3d3d !important;
 }
 
+.escudo{
+  float:left;
+  margin-right: 10px;
+  height: 50px;
+}
+.escudeto{
+  height:auto;
+  width: 200px;
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,.99));
+
+}
+
 .stronger{
-  background-color: #0000aa;
+  background-color: #0000aa !important;
   color:white;
   font-weight: 600;
 }
 .prim, section{
-  background-color: #0281ff;
+  background-color: #0000dd;
 }
 .paisaje-large{
   background-image:
@@ -152,7 +164,7 @@ section, .pd{
   background: url("/images/ft/foto-perfil.jpg") right/cover no-repeat;
   height: -webkit-fill-available;
   min-height: 500px;
-  justify-content:flex-end; /* Izquierda */
+  justify-content:flex-end; /* derecha */
 }
 #descripcion{
   background: url("/images/ft/sustentacion.JPG") center/cover no-repeat;
