@@ -110,7 +110,7 @@ section, .pd{
     position:absolute;
     inset:0;
     background-image:
-        linear-gradient(rgba(0,4,255,.2), rgba(1,26,217,0)),
+        linear-gradient(rgba(0,0,170,.5), rgba(0,0,221,0.5)),
         url("/images/fondillo.png");
     background-repeat:repeat-x;
     background-size:auto 100%;
@@ -172,7 +172,7 @@ section, .pd{
   min-height: 500px;
 }
 #especialidades{
-  background: url("/images/ft/pantano.JPG") center/cover no-repeat;
+  background: url("/images/ft/foto-perfil-anc.jpg") center/cover no-repeat;
   height: -webkit-fill-available;
   min-height: 500px;
 }
@@ -255,7 +255,6 @@ table{
   border-collapse: collapse;
   width: 100%;
 }
-
 .td-1{
   text-align: right;
   padding: 8px;
@@ -272,7 +271,6 @@ table{
   column-width: 280px;
   column-gap: 1.2rem;
 }
-
 .galeria-masonry img {
   width: 100%;
   display: block;
@@ -281,7 +279,6 @@ table{
   border-radius: .5rem;
   transition: transform .2s ease, box-shadow .2s ease;
 }
-
 .galeria-masonry img:hover {
   transform: scale(1.02);
   box-shadow: 0 10px 25px rgba(0,0,0,.15);
@@ -316,7 +313,6 @@ body{
 }
 
 /* inputs */
-
 .login-box input{
   width:100%;
   padding:12px;
@@ -326,7 +322,6 @@ body{
 }
 
 /* button */
-
 .login-box button{
   width:100%;
   margin-top:20px;
@@ -344,13 +339,11 @@ body{
 }
 
 /* curso */
-
 #curso{
   display:none;
 }
 
 /* tarjetas */
-
 .card-curso{
   background:white;
   border-radius:10px;
@@ -360,7 +353,6 @@ body{
 }
 
 /* grid */
-
 .curso-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -368,7 +360,6 @@ body{
 }
 
 /* tarjeta */
-
 .card-curso{
   background:white;
   border-radius:12px;
@@ -383,7 +374,6 @@ body{
 }
 
 /* imagen */
-
 .card-curso img{
   width:100%;
   height:180px;
@@ -391,7 +381,6 @@ body{
 }
 
 /* cuerpo */
-
 .card-body{
   padding:20px;
 }
@@ -402,7 +391,6 @@ body{
 }
 
 /* boton */
-
 .btn-curso{
   display:inline-block;
   margin-top:15px;
@@ -419,13 +407,75 @@ body{
   background:#0033ff;
 }
 
-
 #canvasCertificado{
     width:100%;
     height:auto;
     max-width:100%;
 }
-
 .certificado{
     width:100%;
+}
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:140px;
+    gap:18px;
+}
+.galeria-item{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border:1px solid #ddd;
+    border-radius:8px;
+    box-shadow:0 4px 10px rgba(0,0,0,.12);
+    cursor:pointer;
+}
+.galeria-item:nth-child(1){
+    grid-column:1 / span 2;
+    grid-row:1 / span 2;
+}
+.galeria-item:nth-child(6){
+    grid-column:3 / span 2;
+    grid-row:2 / span 2;
+}
+.galeria-item:nth-child(4),
+.galeria-item:nth-child(5){
+    grid-row:3;
+}
+.galeria-item:nth-child(4){
+    grid-column:1;
+}
+.galeria-item:nth-child(5){
+    grid-column:2;
+}
+#visor{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.85);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s;
+    cursor:zoom-out;
+    z-index:9999;
+}
+#visor.activo{
+    opacity:1;
+    visibility:visible;
+}
+#imagenGrande{
+    max-width:95vw;
+    max-height:95vh;
+    object-fit:contain;
+    border-radius:8px;
+    box-shadow:0 0 30px rgba(0,0,0,.5);
+    transform:scale(.95);
+    transition:transform .25s;
+}
+#visor.activo #imagenGrande{
+    transform:scale(1);
 }

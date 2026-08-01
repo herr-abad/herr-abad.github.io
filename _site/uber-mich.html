@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- CSS personalizado -->
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/ft/herr-ic.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/ft/herr-ic.ico">
 </head>
 <body>
   <!-- Navbar -->
@@ -16,7 +16,7 @@
   <nav class=" stronger navbar navbar-expand-lg navbar-dark prim">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <img class="escudo" src="/images/ft/herr-ic.png" alt="escudo de la web">
+        <img class="escudo" src="/images/ft/herr-ic.ico" alt="escudo de la web">
         <h1>Herr Abad</h1>
       </a>
 
@@ -61,10 +61,10 @@
           <!-- no Dropdown -->
           <li class="nav-item ">
             <a class="nav-link -toggle wt"
-              href="/intranet.html"
+              href="/lernportal.html"
               role="button"
               aria-expanded="false">
-              Intranet
+              Lernportal
             </a>
 
           </li>
@@ -76,7 +76,7 @@
 
   <!-- Navbar 2 -->
   <nav class="prim navbar navbar-expand-lg navbar-dark py-4">
-    <div class="container"><a class="wt" href="/">Deutsch- und Informatiklehrer</a></div>
+    <div class="container"><a class="wt" href="https://miguel-abad.github.io/">Deutsch- und Informatiklehrer</a></div>
   </nav>
 
 
@@ -158,6 +158,20 @@
   <!-- gal-1 -->
   <section class="gal-1 text-light d-flex align-items-center">
     <div class="container">
+
+      <div class="galeria">
+        <img src="images/galeria/present-freunde.jpg" class="galeria-item">
+        <img src="images/galeria/taller-ninios.jpg" class="galeria-item">
+        <img src="images/galeria/present-deutsch.jpg" class="galeria-item">
+        <img src="images/galeria/exposicion-ucv.JPG" class="galeria-item">
+        <img src="images/galeria/deco-50.jpg" class="galeria-item">
+        <img src="images/galeria/ecuador-reu.jpeg" class="galeria-item">
+      </div>
+
+      <div id="visor">
+        <img id="imagenGrande">
+      </div>
+
     </div>
   </section>
 
@@ -189,7 +203,7 @@
     <div class="col-md-3  d-flex flex-column justify-content-center">
               
         <h3>Werkzeug</h3>
-        <a href="/intranet.html"><p>Intranet</p></a>
+        <a href="/intranet.html"><p>Lernportal</p></a>
         <a href="https://www.youtube.com/@herr-Abad"><p>Youtube</p></a>
 
     </div>
@@ -199,13 +213,31 @@
   <!-- Separador -->
   <div class="navbar navbar-expand-lg navbar-dark stronger py-3">
     <div class="container">
-      <p class="wt">2025 - actualidad, Portafolio desarrollado por <a class="wt" href="https://miguel-abad.github.io/">Miguel Abad</a></p>
+      <p class="wt">2025 – heute, Portfolio entwickelt von <a class="wt" href="https://miguel-abad.github.io/">Miguel Abad</a></p>
       <a href="#top" class="btn btn-primary back-to-top" title="Volver arriba">  ↑  </a>
     </div>
   </div>
-  
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const visor = document.getElementById("visor");
+    const imagenGrande = document.getElementById("imagenGrande");
+
+    document.querySelectorAll(".galeria-item").forEach(img => {
+
+        img.addEventListener("click", () => {
+            imagenGrande.src = img.src;
+            visor.classList.add("activo");
+        });
+
+    });
+
+    visor.addEventListener("click", () => {
+        visor.classList.remove("activo");
+    });
+  </script>
+
 </body>
 </html>
