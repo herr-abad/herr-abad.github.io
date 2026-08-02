@@ -146,7 +146,7 @@ section, .pd{
 
 .foter{
   background: linear-gradient(rgb(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-              url("/images/ft/Volver.JPG") center/cover no-repeat;
+              url("/images/ft/cocinando-bratwurst.jpg") center/cover no-repeat;
   height: -webkit-fill-available;
   min-height: 650px;
 }
